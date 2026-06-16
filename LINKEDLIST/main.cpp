@@ -20,6 +20,7 @@ public:
     }
     Node(int d) {
         data = d;
+        next = NULL;
     }
 };
 class LinkedList {
@@ -90,17 +91,61 @@ public:
 };
 
 int main() {
-    int d = 0;
-    cout << "Enter data for the head node" << "\n";
-    cin >> d;
-    Node *n = new Node(d);
-    LinkedList l(n);
-    l.view();
-    l.append(50);
-    l.preprend(40);
-    l.insert(20,0);
-    l.view();
-    l.update(0,0);
-    l.del(0);
-    l.view();
+    LinkedList *l = new LinkedList(new Node(20));  //Default linked list intialised with val of 20 as startind node
+    cout << "Welcome to the linked list" << "\n";
+    while (true) {                      //Adding choices to the linked list for user defined interface
+        int ch = 0;
+        cout << "1.View the linked list" << "\n";
+        cout << "2.Append a new node" << "\n";
+        cout << "3.Prepend a new node" << "\n";
+        cout << "4.Insert a new node at random location" << "\n";
+        cout << "5.Delete a node from the list" << "\n";
+        cout << "6.Update a node from the list" << "\n";
+        cout << "7.Exit" << "\n";
+        cout << "Enter your choice" << "\n";
+        cin >> ch;
+        int d;
+        int pos;
+        switch (ch) {
+            case 1:
+                l->view();
+                break;
+            case 2:
+                cout << "Enter the data to be appended" << "\n";
+                cin >> d;
+                l->append(d);
+                break;
+            case 3:
+                cout << "Enter the data to be prepended" << "\n";
+                cin >> d;
+                l->preprend(d);
+                break;
+            case 4:
+                cout << "Enter the data to be inserted" << "\n";
+                cin >> d;
+                cout << "Enter the position to be inserted" << "\n";
+                cin >> pos;
+                l->insert(d,pos);
+                break;
+            case 5:
+                cout << "Enter the position to be deleted" << "\n";
+                cin >> pos;
+                l->del(pos);
+                break;
+            case 6:
+                cout << "Enter the data to be updated" << "\n";
+                cin >> d;
+                cout << "Enter the position to be updated" << "\n";
+                cin >> pos;
+                l->update(d,pos);
+                break;
+            case 7:
+                exit(0);
+            default:
+                cout << "Invalid choice" << "\n";
+                break;
+        }
+    }
+    cout << "Thank you for using this data structure" << "\n";
+    return 0;
 }
