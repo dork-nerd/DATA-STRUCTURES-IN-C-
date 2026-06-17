@@ -1,3 +1,14 @@
+//Queue  (This is not a Circular queue) ..
+
+//1.Checking whether queue is empty or not
+//2.Checking whether queue is full or not
+//3.Adding elements to the queue
+//4.Removing elements from the que
+//5.Return size of the queue
+//6.Return the front element of the queue
+//7.Return the back element of the queue
+
+
 #include <iostream>
 using namespace std;
 
@@ -63,6 +74,7 @@ public:
     int frontele() {          // returns the front element in the queue (earlier added element)
         if (empty()) {
             cout << "Queue is empty" << "\n";
+            return -1;
         }
         else {
             return arr[front];
@@ -78,21 +90,55 @@ public:
     }
 };
 int main() {
-    int a = 0;
-    cout << "Enter the size of the queue:";
-    cin >> a;
-    Queue q(a);
-    q.push(10);
-    q.push(20);
-    q.push(30);
-    q.push(40);
-    q.pop();
-    cout << q.frontele() << "\n";
-    cout << q.backele() << "\n";
-    cout << q.size() << "\n";
-    cout <<q.full() << "\n";
-    q.pop();
-    q.pop();
-    q.pop();
-    cout << q.size() << "\n";
+    int n = 0;
+    cout << "Enter the size of the queue: " << "\n";
+    cin >> n;
+    Queue *q = new Queue(n);
+    while (true) {
+        int ch = 0;
+        cout << "Queue Data Structure" << "\n";
+        cout << "0.empty" << "\n";
+        cout << "1.Push" << "\n";
+        cout << "2.Pop" << "\n";
+        cout << "3.Size" << "\n";
+        cout << "4.Front" << "\n";
+        cout << "5.Back" << "\n";
+        cout << "6.Exit" << "\n";
+        cout << "Enter your choice: " << "\n";
+        cin >> ch;
+        switch (ch) {
+            case 0:
+                if (q->empty()) {
+                    cout << "queue is empty" << "\n";
+                }
+                else {
+                    cout << "queue is not empty" << "\n";
+                }
+                break;
+            case 1:
+                cout << "Enter the data to be pushed: " << "\n";
+                int data;
+                cin >> data;
+                q->push(data);
+                break;
+            case 2:
+                q->pop();
+                break;
+            case 3:
+                cout << "Size of the queue: " << q->size() << "\n";
+                break;
+            case 4:
+                cout << "Front element: " << q->frontele() << "\n";
+                break;
+            case 5:
+                cout << "Back element: " << q->backele() << "\n";
+                break;
+            case 6:
+                cout << "Thank you for using Queue Data Structure" << "\n";
+                exit(0);
+            default:
+                cout << "You have entered an invalid choice" << "\n";
+                break;
+        }
+    }
 }
